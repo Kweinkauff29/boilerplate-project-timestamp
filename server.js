@@ -21,10 +21,10 @@ app.get("/", function (req, res) {
 
 
 // your first API endpoint...
-/*app.get("/api/hello", function (req, res) {
-  console.log({greeting: 'hello API'});
-  res.json({greeting: 'hello API'});
-});*/
+app.get("/api/hello", function (req, res) {
+  console.log( {greeting: 'hello API'} );
+  //res.json({greeting: 'hello API'});
+});
 
 app.get("/api/timestamp", function (req, res) {
   var now = new Date();
@@ -40,14 +40,14 @@ app.get("/api/:date_string", function (req, res) {
   let dateParse = Date.parse(date_string);
 
   if (newDate === "Invalid Date") {
-    res.json({ "error" : "Invalid Date" })
+    res.json({ "error" : "Invalid Date" });
   }
 
   else {
     res.json({
       "unix": newDate.getTime(),
       "utc": newDate.toUTCString()
-    })
+    });
   }
 
   console.log(dateParse);

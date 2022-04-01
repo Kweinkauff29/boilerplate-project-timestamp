@@ -21,5 +21,8 @@
 		"express",
 		"freecodecamp"
 	],
-	"license": "MIT"
+	"license": "MIT",
+	"devDependencies": {
+		"kill-port": "^1.6.1"
+	}
 }
