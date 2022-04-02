@@ -51,7 +51,7 @@ app.get("/api/:date_string", function (req, res) {
       let newUtc = new Date(parDate);
       res.json({
         "unix": date_string,
-        "utc": newUtc
+        "utc": newUtc.toUTCString()
       })
     }
     else {
