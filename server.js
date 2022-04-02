@@ -34,15 +34,29 @@ app.get("/api/timestamp", function (req, res) {
   })
 });
 
+//app.get("/api/:uinx")
+
 app.get("/api/:date_string", function (req, res) {
   console.log(req, "<=");
-  console.log('test');
   let date_string = req.params.date_string;
+  console.log(date_string);
   let newDate = new Date(date_string);
   let dateParse = Date.parse(date_string);
+  console.log(dateParse);
+  console.log(newDate);
 
-  if (newDate === "Invalid Date") {
+  if (newDate == "Invalid Date") {
+    if (date_string.length > 7) {
+      let parDate = parseInt(date_string);
+      let newUtc = new Date(parDate);
+      res.json({
+        "unix": date_string,
+        "utc": newUtc
+      })
+    }
+    else {
     res.json({ "error" : "Invalid Date" });
+    }
   }
 
   else {
@@ -52,8 +66,6 @@ app.get("/api/:date_string", function (req, res) {
     });
   }
 
-  console.log(dateParse);
-  console.log(newDate);
   res.json({ "error" : "Invalid Date" });
 });
 
