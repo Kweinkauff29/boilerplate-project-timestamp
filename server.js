@@ -26,7 +26,7 @@ app.get("/api/hello", function (req, res) {
   //res.json({greeting: 'hello API'});
 });
 
-app.get("/api/timestamp", function (req, res) {
+app.get("/api/", function (req, res) {
   var now = new Date();
   res.json({
     "unix": now.getTime(),
@@ -45,7 +45,7 @@ app.get("/api/:date_string", function (req, res) {
   console.log(dateParse);
   console.log(newDate);
 
-  if (newDate == "Invalid Date") {
+  if ( newDate == "Invalid Date" ) {
     if (date_string.length > 7) {
       let parDate = parseInt(date_string);
       let newUtc = new Date(parDate);
@@ -55,7 +55,7 @@ app.get("/api/:date_string", function (req, res) {
       })
     }
     else {
-    res.json({ "error" : "Invalid Date" });
+    res.json({ error : "Invalid Date" });
     }
   }
 
