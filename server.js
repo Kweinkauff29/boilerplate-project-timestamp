@@ -46,7 +46,7 @@ app.get("/api/:date_string", function (req, res) {
   console.log(newDate);
 
   if ( newDate == "Invalid Date" ) {
-    if (date_string.length > 12 && data_string.length < 14) {
+    if (date_string.length > 12 && date_string.length < 14) {
       let parDate = parseInt(date_string);
       let newUtc = new Date(parDate);
       res.json({
