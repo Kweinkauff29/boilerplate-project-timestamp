@@ -37,7 +37,7 @@ app.get("/api/", function (req, res) {
 //app.get("/api/:uinx")
 
 app.get("/api/:date_string", function (req, res) {
-  console.log(req, "<=");
+  //console.log(req, "<=");
   let date_string = req.params.date_string;
   console.log(date_string);
   let newDate = new Date(date_string);
@@ -46,16 +46,34 @@ app.get("/api/:date_string", function (req, res) {
   console.log(newDate);
 
   if ( newDate == "Invalid Date" ) {
-    if (date_string.length > 7) {
+    /*if (date_string.length > 9) {
       let parDate = parseInt(date_string);
       let newUtc = new Date(parDate);
       res.json({
         "unix": parDate,
         "utc": newUtc.toUTCString()
       })
-    }
-    else {
+    }*/
+    //else {
     res.json({ error : "Invalid Date" });
+    //}
+  }
+
+  else if (date_string.length == 9 || date_string.length == 10) {
+    let month = date_string.slice(5, 7);
+    let day = date_string.slice(8, 10);
+    console.log(month);
+    console.log(day);
+    if (month <= 12 && day <= 31 ) {
+      console.log("this");
+      res.json({
+        "unix": newDate.getTime(),
+        "utc": newDate.toUTCString()
+      })
+    }
+
+    else {
+      res.json({ "error" : "Invalid Date" });
     }
   }
 
@@ -66,7 +84,7 @@ app.get("/api/:date_string", function (req, res) {
     });
   }
 
-  res.json({ "error" : "Invalid Date" });
+  //res.json({ "error" : "Invalid Date" });
 });
 
 
