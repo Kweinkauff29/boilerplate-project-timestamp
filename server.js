@@ -46,17 +46,17 @@ app.get("/api/:date_string", function (req, res) {
   console.log(newDate);
 
   if ( newDate == "Invalid Date" ) {
-    /*if (date_string.length > 9) {
+    if (date_string.length > 12) {
       let parDate = parseInt(date_string);
       let newUtc = new Date(parDate);
       res.json({
         "unix": parDate,
         "utc": newUtc.toUTCString()
       })
-    }*/
-    //else {
+    }
+    else {
     res.json({ error : "Invalid Date" });
-    //}
+    }
   }
 
   else if (date_string.length == 9 || date_string.length == 10) {
